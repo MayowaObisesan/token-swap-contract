@@ -14,27 +14,35 @@ async function main() {
     const amountB = ethers.parseEther("2");
     // 0xEE98c1f90FF6a11cb215f18A2a0616E8E696fE4b - Localhost Swapper Contract Address
 
-    // Approve the spender to spend an amount
     const tokenA = await ethers.getContractAt("UnoToken", firstTokenAddress);
+    const tokenB = await ethers.getContractAt("DuoToken", secondTokenAddress);
+
     const [owner, spender] = await ethers.getSigners();
 
-    // tokenA.approve(swapper.target, ethers.parseEther("5"));
-    // tokenA.allowance(owner.address, swapper.target);
-    // // tokenA.transfer(owner.address, ethers.parseEther("5"));
+    // Approve the spender to spend an amount
+    tokenA.approve(swapper.target, ethers.parseEther("5"));
+    tokenA.allowance(owner.address, swapper.target);
+    // tokenA.transfer(owner.address, ethers.parseEther("5"));
 
     // swapper.addLiquidity(ethers.parseEther("2"), ethers.parseEther("3"));
 
-    const transaction = await owner.sendTransaction({
-        to: "0xA72ea6360E3402372ED7337A49ff7cCD072A35Ac",
-        value: ethers.parseEther("5")
-    });
-    console.log(transaction);
-
-    console.log(await tokenA.balanceOf(owner.address));
-    console.log(await tokenA.balanceOf(spender.address));
-
     const swapperAdd = await swapper.addLiquidity(amountA, amountB);
     console.log(swapperAdd);
+
+    swapper.swapTokenAForB(ethers.parseEther("0.5"));
+
+
+    // Approve the spender to spend an amount
+    tokenB.approve(swapper.target, ethers.parseEther("5"));
+    tokenB.allowance(owner.address, swapper.target);
+    // tokenA.transfer(owner.address, ethers.parseEther("5"));
+
+    // swapper.addLiquidity(ethers.parseEther("2"), ethers.parseEther("3"));
+
+    const swapperAdd2 = await swapper.addLiquidity(amountA, amountB);
+    console.log(swapperAdd2);
+
+    swapper.swapTokenAForB(ethers.parseEther("0.5"));
 }
 
 // We recommend this pattern to be able to use async/await everywhere
