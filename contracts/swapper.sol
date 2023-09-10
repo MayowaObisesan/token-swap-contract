@@ -2,7 +2,6 @@
 pragma solidity 0.8.19;
 
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
-import "@openzeppelin/contracts/access/Ownable.sol";
 
 interface ISwapper {
     function transferFrom(
@@ -39,7 +38,12 @@ contract Swapper {
 
     function CPMM(uint _fromToken, uint _toToken) internal {}
 
-    function updateReserve(uint _reserveA, uint _reserveB) internal {}
+    function updateReserve(
+        uint _reserveA,
+        uint _reserveB
+    ) internal pure returns (uint) {
+        return _reserveA * _reserveB;
+    }
 
     // a sample code of how the addLiquidity function should be like
     function addLiquidity(uint256 _amountA, uint256 _amountB) external {
