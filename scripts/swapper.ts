@@ -31,7 +31,6 @@ async function main() {
 
     swapper.swapTokenAForB(ethers.parseEther("0.5"));
 
-
     // Approve the spender to spend an amount
     tokenB.approve(swapper.target, ethers.parseEther("5"));
     tokenB.allowance(owner.address, swapper.target);
@@ -42,7 +41,7 @@ async function main() {
     const swapperAdd2 = await swapper.addLiquidity(amountA, amountB);
     console.log(swapperAdd2);
 
-    swapper.swapTokenAForB(ethers.parseEther("0.5"));
+    swapper.swapTokenBForA(ethers.parseEther("0.4"));
 }
 
 // We recommend this pattern to be able to use async/await everywhere
