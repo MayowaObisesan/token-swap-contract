@@ -5,7 +5,7 @@ async function main() {
     await firstToken.waitForDeployment();
 
     console.log(`FirstSwapToken deployed to ${firstToken.target}`);
-    // 0xA72ea6360E3402372ED7337A49ff7cCD072A35Ac - UnoToken Address
+    // 0x79b90f2237304DfaA519Bfab5893eD541Aa49fF1 - UnoToken Address
 }
 
 // We recommend this pattern to be able to use async/await everywhere

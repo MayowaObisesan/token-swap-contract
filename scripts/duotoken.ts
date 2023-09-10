@@ -5,7 +5,7 @@ async function main() {
     await secondToken.waitForDeployment();
 
     console.log(`SecondSwapToken deployed to ${secondToken.target}`);
-    // 0xCF5CD0144087419ec376Fc45F2984dc5D6C955AA - DuoToken Address
+    // 0x2c2145782d2465600Dd81A44fDaD4E7393ac218a - DuoToken Address
 }
 
 // We recommend this pattern to be able to use async/await everywhere

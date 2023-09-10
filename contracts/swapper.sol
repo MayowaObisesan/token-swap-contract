@@ -17,8 +17,8 @@ contract Swapper {
     /**
      * @dev Declaration of State Variables
      */
-    address constant tokenA = 0xA72ea6360E3402372ED7337A49ff7cCD072A35Ac;
-    address constant tokenB = 0xCF5CD0144087419ec376Fc45F2984dc5D6C955AA;
+    address constant tokenA = 0x79b90f2237304DfaA519Bfab5893eD541Aa49fF1;
+    address constant tokenB = 0x2c2145782d2465600Dd81A44fDaD4E7393ac218a;
 
     uint reserveA; // The reserve pool of tokenA
     uint reserveB; // The reserve pool of tokenB
@@ -115,5 +115,11 @@ contract Swapper {
 
         emit SwappedLogs(msg.sender, _toTokenAmount, swappedValue);
         return swappedValue;
+    }
+
+    function getTransaction(
+        address _addr
+    ) external view returns (LiquidityProvider memory) {
+        return liquidityProvider[_addr];
     }
 }

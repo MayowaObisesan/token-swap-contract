@@ -18,11 +18,11 @@ async function main() {
     tokenA.allowance(owner.address, swapper.target);
     // tokenA.transfer(owner.address, ethers.parseEther("5"));
 
-    // const transaction = await owner.sendTransaction({
-    //     to: "0xA72ea6360E3402372ED7337A49ff7cCD072A35Ac",
-    //     value: ethers.parseEther("5")
-    // });
-    // console.log(transaction);
+    const transaction = await owner.sendTransaction({
+        to: "0xA72ea6360E3402372ED7337A49ff7cCD072A35Ac",
+        value: ethers.parseEther("5")
+    });
+    console.log(transaction);
 
     console.log(await tokenA.balanceOf(owner.address));
     console.log(await tokenA.balanceOf(spender.address));
